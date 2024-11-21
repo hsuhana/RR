@@ -19,8 +19,8 @@ const memberSchema = new mongoose.Schema({
         trim: true
     },
     password: {
-        type: String,
-        required: true
+        type: String
+        //don't put "required" if using passport-local-mongoose 
     },
     email: {
         type: String,

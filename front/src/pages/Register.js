@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
 
@@ -13,6 +14,8 @@ const Register = () => {
         birthday: "",
     });
 
+    const navigate = useNavigate(); // Initialize useNavigate hook
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({...formData, [name]: value});
@@ -23,6 +26,7 @@ const Register = () => {
         try{
             const response = await axios.post('/register', formData);
             alert(response.data.message);
+            navigate("/login");
         }catch (error) {
             alert(`Error: ${error.response.data.error}`);
         }
