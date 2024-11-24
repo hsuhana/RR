@@ -7,35 +7,29 @@ const reservationSchema = new mongoose.Schema({
         ref: "Member",
         required: true
     },
-    table: {
+    tableId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Table",
         required: true
     },
-    reservationDate: {
+    date: {
         type: Date,
         required: true
     },
-    reservationTime: {
+    timeSlot: {
         type: String,
         required: true,
-        match: [/^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9])$/, 'Please enter a valid time in HH:MM format']
     },
-    numberOfGuests: {
+    guests: {
         type: Number,
         required: true,
-        min: 1
+        
     },
     specialRequests: {
         type: String,
         trim: true
     },
-    status: {
-        type: String,
-        enum: ["pending", "confirmed", "cancelled"],
-        default: "pending"
-    }
 });
 
-reservationSchema.index({table: 1, reservationDate: 1, reservationTime: 1}, {unique: true});
+//reservationSchema.index({tableId: 1, date: 1, timeSlot: 1}, {unique: true});
 module.exports = mongoose.model("Reservation", reservationSchema);

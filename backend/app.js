@@ -12,6 +12,8 @@ var mongoose = require("mongoose");
 
 var indexRouter = require('./routes/index');
 var membersRouter = require('./routes/members');
+var reservationRouter = require('./routes/reservations');
+var authRouter = require('./routes/auth');
 
 var cors = require('cors');
 
@@ -27,7 +29,11 @@ app.use(cookieParser());
 app.use(session({
   secret: "secretSession",
   resave: false,
-  saveUninitialized: false
+  saveUninitialized: false,
+  cookie: {
+    secure: false, // Set to `true` if using HTTPS
+    maxAge: 24 * 60 * 60 * 1000, // 1 day
+  },
 }));
 
 //mongodb and login setting
@@ -41,6 +47,8 @@ passport.deserializeUser(Member.deserializeUser());
 
 app.use('/', indexRouter);
 app.use('/members', membersRouter);
+app.use('/reservations', reservationRouter);
+app.use('/auth', authRouter);
 
 app.use(cors());
 

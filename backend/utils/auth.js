@@ -3,7 +3,7 @@ function isAuthenticated(req, res, next){
         return next();
     }
     // Send a 401 response with a message
-    res.status(401).json({ redirectTo: 'login', message: 'You need to log in first.' });
+    res.status(401).json({ message: 'You need to log in first.' });
 }
 
 module.exports = { isAuthenticated };
