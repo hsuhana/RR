@@ -13,19 +13,19 @@ const Reservation = () => {
     const [guests, setGuests] = useState(0);
     const [table, setTable] = useState('');
     const [specialRequests, setSpecialRequests] = useState('');
-    const [isCheckingAuth, setIsCheckingAuth] = useState(true);
+    //const [isCheckingAuth, setIsCheckingAuth] = useState(true);
 
-    const isAuthenticated = useAuth();
+    const { isAuthenticated, isLoading } = useAuth(); // Use updated hook
     const navigate = useNavigate();
 
     // Ensure the user is redirected only if not authenticated
     useEffect(() => {
-        if (!isCheckingAuth && !isAuthenticated) {
+        if (!isLoading && !isAuthenticated) {
             navigate('/login'); // Redirect if not authenticated
         }
-    }, [isAuthenticated, isCheckingAuth, navigate]);
+    }, [isAuthenticated, isLoading, navigate]);
 
-    //if (isCheckingAuth) return <div>Loading...</div>; // Show a loading screen while checking authentication
+    if (isLoading) return <div>Loading...</div>; // Show a loading screen while checking authentication
 
 
     const handleNext = (data) => {
