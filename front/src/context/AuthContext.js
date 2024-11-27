@@ -47,8 +47,21 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
+    const logout = async () => {
+        try {
+            await axios.post('/logout', {}, { withCredentials: true });
+            setAuthState({
+                isAuthenticated: false,
+                username: null,
+                isLoading: false,
+            });
+        } catch (error) {
+            console.error('Error during logout:', error);
+        }
+    };
+
     return(
-        <AuthContext.Provider value={{ ...authState, login }}>
+        <AuthContext.Provider value={{ ...authState, login, logout }}>
             {children}
         </AuthContext.Provider>
     );
