@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useState, useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -8,6 +8,7 @@ const Login = () => {
         password: "",
     });
     const [error, setError] = useState("");
+    const { login } = useContext(AuthContext); // Access the login function
     const navigate = useNavigate();
 
     const handleChange = (e) => {
@@ -18,18 +19,12 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError("");
-        try{
-            const response = await axios.post("/login", formData, {
-                withCredentials: true, // Allows cookies to be sent with the request
-            });
-            if(response.data.success){
-                alert("Login successful!");
-                navigate("/");
-            }else{
-                setError(response.data.message);
-            }
-        } catch (error){
-            setError(error.response?.data?.failureMessage || "Login failed. Please try again.");
+        try {
+            await login(formData.username, formData.password); // Call login function
+            alert("Login successful!");
+            navigate("/");
+        } catch (errorMessage) {
+            setError(errorMessage);
         }
     };
 
