@@ -47,7 +47,7 @@ const Member = () => {
                             <strong>Date:</strong> {new Date(reservation.date).toLocaleDateString()}, 
                             <strong> Time:</strong> {reservation.timeSlot}, 
                             <strong> Guests:</strong> {reservation.guests}, 
-                            <strong> Table:</strong> {reservation.tableId ? reservation.tableId._id : "N/A"}
+                            <strong> Table:</strong> {reservation.tableId ? reservation.tableId.tableNumber : "N/A"}
                         </li>
                     ))}
                 </ul>
