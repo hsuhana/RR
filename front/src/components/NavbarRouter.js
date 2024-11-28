@@ -7,6 +7,7 @@ import Menu from '../pages/Menu';
 import Login from '../pages/Login';
 import Reservation from '../pages/Reservation';
 import AuthStatus from './AuthStatus';
+import Members from '../pages/Member';
 
 const NavbarRouter = () => {
     return (
@@ -28,6 +29,7 @@ const NavbarRouter = () => {
                 <Route path="/menu" element={<Menu />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/reservation" element={<Reservation />} />
+                <Route path="/members" element={<Members />} />
             </Routes>
         </>
     );
