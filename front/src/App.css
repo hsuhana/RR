@@ -145,3 +145,20 @@ footer {
 .register-form button:hover {
   background-color: #0056b3;
 }
+
+/*------- Menu page------- */
+.menuBackgorund{
+  background-color: #000000;
+}
+
+.menuBackgorund h1{
+  padding: 5vw;
+  color: white;
+  background-color: #000000;
+  margin: 0vw;
+  font-family: "Permanent Marker", cursive;
+}
+
+.ramen_menu1, .ramen_menu2{
+  width: 100%;
+}
