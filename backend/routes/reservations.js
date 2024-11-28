@@ -56,6 +56,19 @@ router.get('/available-tables', async (req, res) => {
     res.json(availableTables);
 });
 
+// GET /tables/:id
+router.get('/tables/:id', async (req, res) => {
+    try {
+        const table = await Table.findById(req.params.id);
+        if (!table) {
+            return res.status(404).send({ error: 'Table not found' });
+        }
+        res.send(table);
+    } catch (error) {
+        res.status(500).send({ error: 'Failed to fetch table details' });
+    }
+});
+
 // POST /reserve
 router.post('/reserve', isAuthenticated, async (req, res) => {
     try {

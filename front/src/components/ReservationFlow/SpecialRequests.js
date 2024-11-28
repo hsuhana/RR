@@ -1,11 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const SpecialRequests = ({ date, timeSlot, table, guests, onPrevious }) => {
     const [specialRequests, setSpecialRequests] = useState('');
     const [reservationInfo, setReservationInfo] = useState(null); // To store reservation details
+    const [tableNumber, setTableNumber] = useState(''); // To store table number
     const navigate = useNavigate();
+
+    // Fetch the table number based on the table ID
+    useEffect(() => {
+        if (table) {
+            axios
+                .get(`/reservations/tables/${table}`) // Assuming an endpoint exists to fetch a table by its ID
+                .then(response => {
+                    console.log('Table Response:', response.data);
+                    setTableNumber(response.data.tableNumber)
+
+                })
+                .catch(error => console.error('Error fetching table number:', error));
+        }
+    }, [table]);
 
     const handleReserve = async () => {
         try{
@@ -22,7 +37,7 @@ const SpecialRequests = ({ date, timeSlot, table, guests, onPrevious }) => {
                 date,
                 timeSlot,
                 guests,
-                table,
+                tableNumber,
                 specialRequests,
                 message: response.data.message,
             });
@@ -46,7 +61,7 @@ const SpecialRequests = ({ date, timeSlot, table, guests, onPrevious }) => {
                 <p><strong>Date:</strong> {reservationInfo.date}</p>
                 <p><strong>Time Slot:</strong> {reservationInfo.timeSlot}</p>
                 <p><strong>Guests:</strong> {reservationInfo.guests}</p>
-                <p><strong>Table:</strong> {reservationInfo.table}</p>
+                <p><strong>Table:</strong> {reservationInfo.tableNumber}</p>
                 <p><strong>Special Requests:</strong> {reservationInfo.specialRequests}</p>
                 <p>Redirecting to home page...</p>
             </div>

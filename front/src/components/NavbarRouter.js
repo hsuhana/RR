@@ -1,15 +1,17 @@
 import React from 'react';
 //<Router> enables the entire routing context, while <Link> simply triggers a change in the URL when clicked.
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route, Link } from 'react-router-dom';
 import Home from '../pages/Home';
 import Register from '../pages/Register';
 import Menu from '../pages/Menu';
 import Login from '../pages/Login';
 import Reservation from '../pages/Reservation';
+import AuthStatus from './AuthStatus';
+import Members from '../pages/Member';
 
 const NavbarRouter = () => {
     return (
-        <Router>
+        <>
             <nav>
                 <ul>
                     <li><Link to="/">Home</Link></li>
@@ -18,6 +20,7 @@ const NavbarRouter = () => {
                     <li><Link to="/login">Login</Link></li>
                     <li><Link to="/reservation">Reservation</Link></li>
                 </ul>
+                <AuthStatus />
             </nav>
 
             <Routes>
@@ -26,8 +29,9 @@ const NavbarRouter = () => {
                 <Route path="/menu" element={<Menu />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/reservation" element={<Reservation />} />
+                <Route path="/members" element={<Members />} />
             </Routes>
-        </Router>
+        </>
     );
 };
 

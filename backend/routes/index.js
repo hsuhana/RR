@@ -49,9 +49,27 @@ router.post("/login", (req, res, next) => {
       if (err) {
         return res.status(500).json({ success: false, message: "An error occurred during login." });
       }
-      return res.status(200).json({ success: true, message: "Login successful!" });
+      return res.status(200).json({ 
+        success: true,
+        message: "Login successful!",
+        user: {
+          username: user.username,
+          firstName: user.firstName,
+          lastName: user.lastName,
+        },
+      });
     });
   })(req, res, next);
+});
+
+// POST /log out
+router.post('/logout', (req, res) => {
+  req.logout((err) => {
+    if (err) {
+        return res.status(500).json({ success: false, message: 'Logout failed' });
+    }
+    res.status(200).json({ success: true, message: 'Logged out successfully' });
+  });
 });
 
 
