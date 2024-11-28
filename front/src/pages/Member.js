@@ -24,14 +24,6 @@ const Member = () => {
         fetchMemberData();
     }, []);
 
-    if (error) {
-        return <p style={{ color: "red" }}>{error}</p>;
-    }
-
-    if (!memberData) {
-        return <p>Loading...</p>;
-    }
-
     const handleInputChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
@@ -51,6 +43,23 @@ const Member = () => {
             setError(err.response?.data?.message || "Error updating profile.");
         }
     };
+
+    const handleCancelReservation = async (reservationId) => {
+        try{
+            await axios.delete(`/reservations/${reservationId}`, { withCredentials: true });
+            setReservations((prev) => prev.filter((res) => res._id !== reservationId));
+        }catch (err){
+            setError(err.response?.data?.message || "Error canceling reservation.");
+        }
+    };
+
+    if (error) {
+        return <p style={{ color: "red" }}>{error}</p>;
+    }
+
+    if (!memberData) {
+        return <p>Loading...</p>;
+    }
 
     return (
         <div>
@@ -137,6 +146,9 @@ const Member = () => {
                             <strong> Time:</strong> {reservation.timeSlot}, 
                             <strong> Guests:</strong> {reservation.guests}, 
                             <strong> Table:</strong> {reservation.tableId ? reservation.tableId.tableNumber : "N/A"}
+                            <button onClick={() => handleCancelReservation(reservation._id)}>
+                                CANCEL
+                            </button>
                         </li>
                     ))}
                 </ul>

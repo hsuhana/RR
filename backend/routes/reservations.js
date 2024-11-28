@@ -102,5 +102,27 @@ router.post('/reserve', isAuthenticated, async (req, res) => {
     }
 });
 
+// DELETE /:id
+router.delete('/:id', isAuthenticated, async(req, res) => {
+    try{
+        const reservationId = req.params.id;
+
+        const reservation = await Reservation.findOne({
+            _id: reservationId,
+            member: req.user._id,
+        });
+
+        if (!reservation) {
+            return res.status(404).json({ error: "Reservation not found or not authorized to cancel." });
+        }
+
+        await Reservation.deleteOne({ _id: reservationId });
+        res.status(200).json({ message: "Reservation canceled successfully." });
+    } catch (error){
+        console.error("Error canceling reservation:", error);
+        res.status(500).json({ error: "Internal server error" });
+    }
+});
+
 
 module.exports = router;
