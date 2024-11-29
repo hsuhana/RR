@@ -2,7 +2,7 @@
   text-align: center;
 }
 
-.App-logo {
+/* .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
@@ -35,13 +35,14 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
 
 
 /*-------- Header-------- */
 nav {
   background-color: #4d4c4c;
   padding: 10px 20px;
+  padding-bottom: 0;
 }
 
 nav ul {
@@ -49,6 +50,8 @@ nav ul {
   margin: 0;
   padding: 0;
   display: flex;
+  justify-content: space-evenly;
+
 }
 
 nav ul li {
@@ -65,6 +68,20 @@ nav ul li a {
 
 nav ul li a:hover {
   color: #51c4f5;
+}
+
+/*-------- AuthStatus -------- */
+.userStatus{
+  display: flex; /* Enable flexbox */
+  justify-content: flex-end; /* Align items to the right */
+  align-items: center;
+  padding-right: 3rem;
+}
+
+.userStatus p{
+  color: #ffed9a;
+  font-family: "Caveat", cursive;
+  font-weight: 700;
 }
 
 /*-------- Footer-------- */

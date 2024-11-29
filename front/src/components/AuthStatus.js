@@ -11,7 +11,7 @@ const AuthStatus = () => {
     }
 
     return (
-        <div>
+        <div className='userStatus'>
             {isAuthenticated ? (
                 <>
                     <p>Welcome, <strong>{username}</strong>!</p>
