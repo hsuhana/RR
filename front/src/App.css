@@ -89,7 +89,6 @@ footer {
 .register-page {
   background-image: url('./images/ramen2.jpg');
   background-size: cover;
-  background-position: center;
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -145,3 +144,30 @@ footer {
 .register-form button:hover {
   background-color: #0056b3;
 }
+
+/*-----Button (Member, Logout)------*/
+.username {
+  color: #fff;
+}
+
+.button-container {
+  display: flex; /* This arranges the buttons side by side */
+  gap: 10px; /* Adds space between the buttons */
+}
+
+.btnLogin {
+  padding: 10px 20px; /* Adjust the size of the buttons */
+  margin: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  border: 2px solid #e7e7e7; /* Border around the buttons */
+  border-radius: 12px; /* Rounded corners */
+  background-color: #f0f0f0; /* Button background color */
+  transition-duration: 0.4s;
+  color: black;
+}
+
+.btnLogin:hover {
+  background-color: #7270f1; /* Change background color on hover */
+}
+

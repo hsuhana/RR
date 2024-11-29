@@ -14,12 +14,12 @@ const AuthStatus = () => {
         <div>
             {isAuthenticated ? (
                 <>
-                    <p>Welcome, <strong>{username}</strong>!</p>
-                    <button onClick={() => navigate('/members')}>Member</button>
-                    <button onClick={logout}>Log Out</button>
+                    <h2 className='username'>Welcome, <strong>{username}</strong>!</h2>
+                    <button className='btnLogin' onClick={() => navigate('/members')}>Member</button>
+                    <button className='btnLogin' onClick={logout}>Log Out</button>
                 </>
             ) : (
-                <p>Welcome, Visitor!</p>
+                <h2 className='username'>Welcome, Visitor!</h2>
             )}
         </div>
     );
