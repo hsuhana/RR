@@ -20,19 +20,19 @@ const TimeSlotSelection = ({ date, onNext, onPrevious }) => {
     }
 
     return(
-        <div>
+        <div className='timeSelection'>
             <h1>Select a Time Slot</h1>
             <div>
                 {
                     timeSlots.map(ts => (
-                        <button key={ts.time} onClick={() => handleTimeSlotSelect(ts.time)}>
+                        <button key={ts.time} className={`timePickButton ${selectedTimeSlot === ts.time ? 'selected' : ''}`} onClick={() => handleTimeSlotSelect(ts.time)}>
                             {ts.time}
                         </button>
                     ))
                 }
             </div>
-            <button onClick={onPrevious}>PREVIOUS</button>
-            <button onClick={handleNext} disabled={!selectedTimeSlot}>NEXT</button>
+            {/* <button  onClick={onPrevious}>PREVIOUS</button> */}
+            <button className='dataSubmit' onClick={handleNext} disabled={!selectedTimeSlot}>NEXT</button>
         </div>
     );
 };

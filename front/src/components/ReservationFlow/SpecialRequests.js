@@ -69,15 +69,17 @@ const SpecialRequests = ({ date, timeSlot, table, guests, onPrevious }) => {
     }
 
     return(
-        <div>
+        <div className='dateSelection'>
             <h1>Special Requests</h1>
             <textarea 
                 value={specialRequests}
                 onChange={(e) => setSpecialRequests(e.target.value)}
                 placeholder='Enter any special requests'
+                className='textArea'
+                rows="6" cols="40"
             />
-            <button onClick={onPrevious}>PREVIOUS</button>
-            <button onClick={handleReserve}>RESERVE</button>
+            {/* <button onClick={onPrevious}>PREVIOUS</button> */}
+            <button className='dataSubmit' onClick={handleReserve}>RESERVE</button>
         </div>
     );
 };
