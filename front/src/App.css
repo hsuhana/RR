@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  
 }
 
 /* .App-logo {
@@ -78,6 +79,13 @@ nav ul li a:hover {
   padding-right: 3rem;
 }
 
+.userStatus > button {
+  margin-left: 0.2rem;
+  background-color: #00000000;
+
+  border-style: none;
+}
+
 .userStatus p{
   color: #ffed9a;
   font-family: "Caveat", cursive;
@@ -111,37 +119,42 @@ footer {
   background-size: cover;
   background-position: center;
   height: 100vh;
-  display: flex;
+  /* display: flex; */
   justify-content: center;
   align-items: center;
   color: white;
+  padding: 1rem;
+  overflow: auto;
 }
 
 .register-container {
-  max-width: 400px;
-  margin: 50px auto; /* Center the form horizontally */
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  width: 60%;
+  margin: 3rem auto;
+  padding: 2rem;
+  /* border: 1px solid #ccc; */
+  border-radius: 1rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  background-color: #f9f9f9;
+  background-color: #f9f9f9b9;
+
 }
 
 .register-container h1 {
   text-align: center;
   color: #333;
-  margin-bottom: 20px;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 .register-form input {
   display: block; /* Stack inputs vertically */
-  width: calc(100% - 20px); /* Full width minus padding */
-  margin-bottom: 15px;
+  height: 80%;
+  width: 80%;
+  margin: 0 auto 1rem auto;
   border: 1px solid #ddd;
-  border-radius: 5px;
-  font-size: 16px;
+  border-radius: 0.5rem;
+  font-size: 1rem;
   outline: none;
-  padding: 10px;
+  padding: 1rem;
 }
 
 .register-form input:focus {
@@ -150,12 +163,13 @@ footer {
 }
 
 .register-form button {
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
+  width: 80%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  font-size: 1rem;
   font-weight: bold;
   color: #fff;
-  background-color: #007bff;
+  background-color: #4e91ef;
   border: none;
   border-radius: 5px;
   cursor: pointer;
