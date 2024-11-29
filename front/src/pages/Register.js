@@ -35,19 +35,19 @@ const Register = () => {
     return (
         <div className="register-page">
 
-        <div className="register-container">
-            <h1>Register Page</h1>
-            <form onSubmit={handleSubmit} className="register-form">
-                <input type="text" name="firstName" placeholder="First Name" onChange={handleChange} required/>
-                <input type="text" name="lastName" placeholder="Last Name" onChange={handleChange} required/>
-                <input type="text" name="username" placeholder="Username" onChange={handleChange} required/>
-                <input type="password" name="password" placeholder="Password" onChange={handleChange} required/>
-                <input type="email" name="email" placeholder="Email" onChange={handleChange} required/>
-                <input type="text" name="phoneNumber" placeholder="Phone Number" onChange={handleChange} required />
-                <input type="date" name="birthday" onChange={handleChange} required/>
-                <button type="submit">Register</button>
-            </form>
-        </div>
+            <div className="register-container">
+                <h1>Register</h1>
+                <form onSubmit={handleSubmit} className="register-form">
+                    <input type="text" name="firstName" placeholder="First Name" onChange={handleChange} required/>
+                    <input type="text" name="lastName" placeholder="Last Name" onChange={handleChange} required/>
+                    <input type="text" name="username" placeholder="Username" onChange={handleChange} required/>
+                    <input type="password" name="password" placeholder="Password" onChange={handleChange} required/>
+                    <input type="email" name="email" placeholder="Email" onChange={handleChange} required/>
+                    <input type="text" name="phoneNumber" placeholder="Phone Number" onChange={handleChange} required />
+                    <input type="date" name="birthday" onChange={handleChange} required/>
+                    <button type="submit">Register</button>
+                </form>
+            </div>
         </div>
     );
 };
