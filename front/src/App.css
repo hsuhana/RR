@@ -80,16 +80,26 @@ nav ul li a:hover {
 }
 
 .userStatus > button {
-  margin-left: 0.2rem;
+  margin-left: 0.4rem;
   background-color: #00000000;
-
   border-style: none;
+  border-bottom: solid 0.8px #ffed9a;
+  font-family: "Permanent Marker", cursive;
+  color: #ffed9a;
+  padding: 1px;
+  transition: color 0.3s ease;
+}
+
+.userStatus > button:hover{
+  color: #f59051;
+  border-bottom: solid 0.8px #f59051;
 }
 
 .userStatus p{
   color: #ffed9a;
   font-family: "Caveat", cursive;
   font-weight: 700;
+  font-size: 1.1rem;
 }
 
 /*-------- Footer-------- */
