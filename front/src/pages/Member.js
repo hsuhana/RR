@@ -65,7 +65,9 @@ const Member = () => {
         <div>
             <h1>Member Profile</h1>
             {editMode ? (
-                <form onSubmit={handleSubmit}>
+           　<div className="body">
+
+                <form className="profile-edit-container" onSubmit={handleSubmit}>
                     <label>
                         First Name:
                         <input
@@ -121,32 +123,38 @@ const Member = () => {
                         />
                     </label>
                     <br />
-                    <button type="submit">Save</button>
-                    <button type="button" onClick={handleEditToggle}>
+                    <button class="btnSave" type="submit">Save</button>
+                    <button class="btnChange" type="button" onClick={handleEditToggle}>
                         Cancel
                     </button>
                 </form>
-            ) : (
-                <div>
-                    <h2>Details:</h2>
-                    <p><strong>Username:</strong> {memberData.username}</p>
-                    <p><strong>Name:</strong> {memberData.firstName} {memberData.lastName}</p>
-                    <p><strong>Email:</strong> {memberData.email}</p>
-                    <p><strong>Phone:</strong> {memberData.phoneNumber}</p>
-                    <p><strong>Birthday:</strong> {new Date(memberData.birthday).toLocaleDateString()}</p>
-                    <button onClick={handleEditToggle}>EDIT</button>
                 </div>
+            ) : (
+                <div className="body">
+                <div className="details-box">
+                    <h2 class="profile-title">Details:</h2>
+                    <div class="profile-details">
+                    <p className="label"><strong>Username:</strong><p className="input"> {memberData.username}</p></p>
+                    <p className="label"><strong>Name:</strong> <p className="input"> {memberData.firstName} {memberData.lastName}</p></p>
+                    <p className="label"><strong>Email:</strong> <p className="input"> {memberData.email}</p></p>
+                    <p className="label"><strong>Phone:</strong> <p className="input"> {memberData.phoneNumber}</p></p>
+                    <p className="label"><strong>Birthday:</strong> <p className="input"> {new Date(memberData.birthday).toLocaleDateString()}</p></p>
+                    <button class="btnEdit" onClick={handleEditToggle}>EDIT</button>
+                </div>
+                </div>
+                </div>
+                
             )}
-            <h2>Your Reservations:</h2>
+            <h2 className="reservationTitle">Your Reservations:</h2>
             {reservations.length > 0 ? (
-                <ul>
+                <ul className="reservation">
                     {reservations.map((reservation) => (
-                        <li key={reservation._id}>
+                        <li className="reservation_detail" key={reservation._id}>
                             <strong>Date:</strong> {new Date(reservation.date).toLocaleDateString()}, 
                             <strong> Time:</strong> {reservation.timeSlot}, 
                             <strong> Guests:</strong> {reservation.guests}, 
                             <strong> Table:</strong> {reservation.tableId ? reservation.tableId.tableNumber : "N/A"}
-                            <button onClick={() => handleCancelReservation(reservation._id)}>
+                            <button className="btnCancel" onClick={() => handleCancelReservation(reservation._id)}>
                                 CANCEL
                             </button>
                         </li>
