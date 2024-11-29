@@ -11,15 +11,19 @@ const AuthStatus = () => {
     }
 
     return (
-        <div>
+        <div >
             {isAuthenticated ? (
                 <>
-                    <p>Welcome, <strong>{username}</strong>!</p>
-                    <button onClick={() => navigate('/members')}>Member</button>
-                    <button onClick={logout}>Log Out</button>
+                    <div className='userStatus'>
+                        <p>Welcome, <strong>{username}</strong>!</p>
+                        <button onClick={() => navigate('/members')}>Member</button>
+                        <button onClick={logout}>Log Out</button>
+                    </div>
                 </>
             ) : (
-                <p>Welcome, Visitor!</p>
+                <div className='userStatus'>
+                    <p>Welcome, Visitor!</p>
+                </div>
             )}
         </div>
     );
