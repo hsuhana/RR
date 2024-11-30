@@ -35,20 +35,21 @@ const TableSelection = ({ date, timeSlot, onNext, onPrevious }) => {
     return(
         <div>
             {step === 1 && (
-                <div>
-                    <h1>Enter Number of Guests</h1>
+                <div className='guestSelection'>
+                    <h1 >Enter Number of Guests</h1>
                     <input 
                         type='number'
                         value={guests || ''}
                         onChange={(e) => setGuests(parseInt(e.target.value))}
                         placeholder='Number of guests'
+                        id='guestNumber'
                     />
-                    <button onClick={handleGuestSubmit}>NEXT</button>
+                    <button className='dataSubmit' onClick={handleGuestSubmit}>NEXT</button>
                 </div>
             )}
             {step === 2 && (
-                <div>
-                    <h1>Select a Table</h1>
+                <div className='tableSelection'>
+                    <h1 >Select a Table</h1>
                     <div>
                         {
                             tables.length > 0 ? (
@@ -56,6 +57,7 @@ const TableSelection = ({ date, timeSlot, onNext, onPrevious }) => {
                                     <button
                                         key={table.tableNumber}
                                         onClick={() => handleTableSelect(table._id)}
+                                        id='tablePickButton'
                                         className={selectedTable === table._id ? 'selected' : ''}
                                     >
                                         Table {table.tableNumber} - Seats {table.seats}
@@ -64,8 +66,8 @@ const TableSelection = ({ date, timeSlot, onNext, onPrevious }) => {
                             ) : (<p>No tables available for the selected number of guests.</p>)
                         }
                     </div>
-                    <button onClick={() => setStep(1)}>PREVIOUS</button>
-                    <button onClick={handleNext} disabled={!selectedTable}>NEXT</button>
+                    {/* <button onClick={() => setStep(1)}>PREVIOUS</button> */}
+                    <button className='dataSubmit' onClick={handleNext} disabled={!selectedTable}>NEXT</button>
                 </div>
             )}
         </div>

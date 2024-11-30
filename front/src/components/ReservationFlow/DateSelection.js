@@ -25,18 +25,18 @@ const DateSelection = ({ onNext }) => {
     };
 
     return(
-        <div>
+        <div className='dateSelection'>
             <h1>Select a Date</h1>
             <div>
                 {
                     availableDates.map(date => (
-                        <button key={date} onClick={() => handleDateSelect(date)}>
+                        <button className={`datePickButton ${selectedDate === date ? 'selected' : ''}`} key={date} onClick={() => handleDateSelect(date)}>
                             {date}
                         </button>
                     ))
                 }
             </div>
-            <button onClick={handleNext} disabled={!selectedDate}>NEXT</button>
+            <button className='dataSubmit' onClick={handleNext} disabled={!selectedDate}>NEXT</button>
         </div>
     );
 };

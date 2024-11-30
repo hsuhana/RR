@@ -5,6 +5,7 @@ import DateSelection from "../components/ReservationFlow/DateSelection";
 import TimeSlotSelection from "../components/ReservationFlow/TimeSlotSelection";
 import TableSelection from "../components/ReservationFlow/TableSelection";
 import SpecialRequests from "../components/ReservationFlow/SpecialRequests";
+import ProgressBar from "../components/ProgressBar";
 
 const Reservation = () => {
     const [step, setStep] = useState(1);
@@ -14,6 +15,7 @@ const Reservation = () => {
     const [table, setTable] = useState('');
     const [specialRequests, setSpecialRequests] = useState('');
     //const [isCheckingAuth, setIsCheckingAuth] = useState(true);
+
 
     const { isAuthenticated, isLoading } = useAuth(); // Use updated hook
     const navigate = useNavigate();
@@ -57,7 +59,8 @@ const Reservation = () => {
     };
 
     return(
-        <div>
+        <div className="reservationPage">
+            <ProgressBar step={step} />
             {step === 1 && <DateSelection onNext={handleNext} />}
             {step === 2 && <TimeSlotSelection date={date} onNext={handleNext} onPrevious={handlePrevious}/>}
             {step === 3 && <TableSelection date={date} timeSlot={timeSlot} onNext={handleNext} onPrevious={handlePrevious}/>}

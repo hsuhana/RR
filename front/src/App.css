@@ -1,6 +1,8 @@
+
+
 .App {
   text-align: center;
-  
+  height: 100vh;
 }
 
 /* .App-logo {
@@ -107,6 +109,9 @@ footer {
   background-color: #4d4c4c;
   padding: 10px 20px;
   color: #fff;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 
 /*-------- Home page-------- */
@@ -309,3 +314,154 @@ input:focus {
 .reservationTitle {
   margin: 50px 0 10px 0;
 }
+
+/*-------- ProgressBar -------- */
+.progress-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px auto;
+  width: 80%;
+  max-width: 600px;
+  position: relative;
+}
+
+.progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  flex: 1; /* Ensure equal spacing between steps */
+}
+
+.circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #ccc;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  z-index: 1; /* Ensure the circle is above the connectors */
+}
+
+.circle.completed {
+  background-color: #ffb274; /* Completed step color */
+}
+
+.label {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #666;
+}
+
+.label.active {
+  font-weight: bold;
+  color: #ffb274;
+}
+
+.connector {
+  position: absolute;
+  height: 4px;
+  width: 100px;
+  background-color: #ccc;
+  top: 24px;
+  left: 50%;
+  transform: translateX(25%);
+  z-index: 0;
+}
+
+.connector.completed {
+  background-color: #ffb274; /* Completed connector color */
+}
+
+/*-------- Reservation Date Page -------- */
+/*-------- Reservation Time Page -------- */
+/*-------- Reservation Guest Page -------- */
+.reservationPage{
+  background-image: url('./images/background.png');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  margin-top: -1.5rem;
+  padding: 0 2rem;
+}
+
+.progress-bar{
+  padding-top: 3rem;
+  font-family: "Caveat", cursive;
+}
+
+.dateSelection h1, .timeSelection h1, .guestSelection h1, .tableSelection h1{
+  font-family: "Permanent Marker", cursive;
+  color: #ffffff;
+}
+
+.datePickButton, .timePickButton, #tablePickButton{
+  font-family: "Permanent Marker", cursive;
+  border-style: none;
+  border: solid 2px #ffed9a;
+  background-color: #00000000;
+  margin: 1rem;
+  color: #ffed9a;
+  padding: 0.8rem 1.5rem;
+  border-radius: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.datePickButton:hover, .timePickButton:hover, #tablePickButton:hover{
+  color: #f59051;
+  border: solid 2px #f59051;
+}
+
+.datePickButton.selected, .timePickButton.selected, #tablePickButton.selected {
+  background-color: #ff966a;
+  color: #ffffff; /* Text color for selected state */
+  border-color: #ffb798;
+}
+
+.dataSubmit:disabled{
+  margin-top: 3rem;
+  padding: 0.8rem 2rem;
+  font-family: "Permanent Marker", cursive;
+  border-style: none;
+  border: solid 2px #cf92476f;
+  background-color: #00000000;
+  color: #cf92476f;
+  border-radius: 0.8rem;
+}
+
+.dataSubmit{
+  margin-top: 3rem;
+  padding: 0.8rem 2rem;
+  font-family: "Permanent Marker", cursive;
+  border-style: none;
+  border: solid 2px #ff746a;
+  background-color: #ff746a;
+  color: #ffffff;
+  border-radius: 0.8rem;
+}
+
+.dataSubmit:hover{
+  margin-top: 3rem;
+  padding: 0.8rem 2rem;
+  font-family: "Permanent Marker", cursive;
+  border-style: none;
+  border: solid 2px #a93f3f;
+  background-color: #a93f3f;
+  color: #ffffff;
+  border-radius: 0.8rem;
+}
+
+#guestNumber, .textArea{
+  display: block;
+  margin: 3rem auto 0.5rem auto;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  font-family: "Permanent Marker", cursive;
+}
+
