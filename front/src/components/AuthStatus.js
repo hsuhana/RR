@@ -6,6 +6,11 @@ const AuthStatus = () => {
     const { isAuthenticated, username, isLoading, logout } = useContext(AuthContext);
     const navigate = useNavigate();
 
+    const handleLogout = async() => {
+        await logout();
+        navigate('/');
+    }
+
     if (isLoading) {
         return <p>Loading...</p>; // Show loading state while checking authentication
     }
@@ -15,14 +20,14 @@ const AuthStatus = () => {
             {isAuthenticated ? (
                 <>
                     <div className='userStatus'>
-                        <p>Welcome, <strong>{username}</strong>!</p>
+                        <p>Welcome, <strong>{username}</strong>&nbsp;&nbsp;</p>
                         <button onClick={() => navigate('/members')}>Member</button>
-                        <button onClick={logout}>Log Out</button>
+                        <button onClick={handleLogout}>Log Out</button>
                     </div>
                 </>
             ) : (
                 <div className='userStatus'>
-                    <p>Welcome, Visitor!</p>
+                    <p>Welcome, Visitor</p>
                 </div>
             )}
         </div>

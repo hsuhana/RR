@@ -61,15 +61,21 @@ nav ul li {
   margin: 0 15px;
 }
 
-nav ul li a {
+nav ul li button{
+  background-color: #00000000;
+  border-style: none;
+}
+
+nav ul li a, nav ul li button {
   text-decoration: none;
   color: white;
   font-weight: bold;
   transition: color 0.3s ease;
   font-family: "Permanent Marker", cursive;
+  font-size: 1rem;
 }
 
-nav ul li a:hover {
+nav ul li a:hover, nav ul li button:hover {
   color: #51c4f5;
 }
 
@@ -112,6 +118,7 @@ footer {
   position: fixed;
   bottom: 0;
   width: 100%;
+  font-family: "Permanent Marker", cursive;
 }
 
 /*-------- Home page-------- */
@@ -140,6 +147,7 @@ footer {
   color: white;
   padding: 1rem;
   overflow: auto;
+  font-family: "Permanent Marker", cursive;
 }
 
 .register-container {
@@ -155,7 +163,7 @@ footer {
 
 .register-container h1 {
   text-align: center;
-  color: #333;
+  color: #947060;
   margin-top: 0.5rem;
   margin-bottom: 1rem;
 }
@@ -170,6 +178,8 @@ footer {
   font-size: 1rem;
   outline: none;
   padding: 1rem;
+  background-color: #ffffff;
+  font-family: "Caveat", cursive;
 }
 
 .register-form input:focus {
@@ -189,6 +199,7 @@ footer {
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  font-family: "Permanent Marker", cursive;
 }
 
 .register-form button:hover {
@@ -210,6 +221,10 @@ footer {
 
 .ramen_menu1, .ramen_menu2{
   width: 100%;
+}
+
+.ramen_menu2{
+  margin-bottom: 4rem;
 }
 
 /*------- Member page------- */
@@ -353,6 +368,7 @@ input:focus {
 }
 
 .label {
+  margin-left: 0rem;
   margin-top: 8px;
   font-size: 14px;
   color: #666;
@@ -378,9 +394,7 @@ input:focus {
   background-color: #ffb274; /* Completed connector color */
 }
 
-/*-------- Reservation Date Page -------- */
-/*-------- Reservation Time Page -------- */
-/*-------- Reservation Guest Page -------- */
+/*-------- Reservation Date, Time, Guest, SpecialRequests Page -------- */
 .reservationPage{
   background-image: url('./images/background.png');
   background-size: cover;
@@ -462,6 +476,17 @@ input:focus {
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
   text-align: center;
+  font-family: "Caveat", cursive;
+  background-color: white;
+  
+}
+
+.reservationConfirm{
+  color: white;
+  font-family: "Caveat", cursive;
+}
+
+.reservationConfirm h1, .reservationConfirm strong{
   font-family: "Permanent Marker", cursive;
 }
 
