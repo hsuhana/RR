@@ -1,5 +1,3 @@
-
-
 .App {
   text-align: center;
   height: 100vh;
@@ -81,8 +79,8 @@ nav ul li a:hover, nav ul li button:hover {
 
 /*-------- AuthStatus -------- */
 .userStatus{
-  display: flex; /* Enable flexbox */
-  justify-content: flex-end; /* Align items to the right */
+  display: flex; 
+  justify-content: flex-end; 
   align-items: center;
   padding-right: 3rem;
 }
@@ -189,7 +187,7 @@ footer {
 }
 
 .register-form input {
-  display: block; /* Stack inputs vertically */
+  display: block;
   height: 80%;
   width: 80%;
   margin: 0 auto 1rem auto;
@@ -466,7 +464,7 @@ input {
   align-items: center;
   text-align: center;
   position: relative;
-  flex: 1; /* Ensure equal spacing between steps */
+  flex: 1; 
 }
 
 .circle {
@@ -479,11 +477,11 @@ input {
   align-items: center;
   justify-content: center;
   font-weight: bold;
-  z-index: 1; /* Ensure the circle is above the connectors */
+  z-index: 1; 
 }
 
 .circle.completed {
-  background-color: #ffb274; /* Completed step color */
+  background-color: #ffb274;
 }
 
 .label {
@@ -510,7 +508,7 @@ input {
 }
 
 .connector.completed {
-  background-color: #ffb274; /* Completed connector color */
+  background-color: #ffb274; 
 }
 
 /*-------- Reservation Date, Time, Guest, SpecialRequests Page -------- */
@@ -552,7 +550,7 @@ input {
 
 .datePickButton.selected, .timePickButton.selected, #tablePickButton.selected {
   background-color: #ff966a;
-  color: #ffffff; /* Text color for selected state */
+  color: #ffffff; 
   border-color: #ffb798;
 }
 
