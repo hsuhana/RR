@@ -56,7 +56,7 @@ const SpecialRequests = ({ date, timeSlot, table, guests, onPrevious }) => {
     if (reservationInfo) {
         // Display reservation info and success message
         return (
-            <div>
+            <div className='reservationConfirm'>
                 <h1>{reservationInfo.message}</h1>
                 <p><strong>Date:</strong> {reservationInfo.date}</p>
                 <p><strong>Time Slot:</strong> {reservationInfo.timeSlot}</p>

@@ -61,15 +61,21 @@ nav ul li {
   margin: 0 15px;
 }
 
-nav ul li a {
+nav ul li button{
+  background-color: #00000000;
+  border-style: none;
+}
+
+nav ul li a, nav ul li button {
   text-decoration: none;
   color: white;
   font-weight: bold;
   transition: color 0.3s ease;
   font-family: "Permanent Marker", cursive;
+  font-size: 1rem;
 }
 
-nav ul li a:hover {
+nav ul li a:hover, nav ul li button:hover {
   color: #51c4f5;
 }
 
@@ -112,6 +118,7 @@ footer {
   position: fixed;
   bottom: 0;
   width: 100%;
+  font-family: "Permanent Marker", cursive;
 }
 
 /*-------- Home page-------- */
@@ -140,6 +147,22 @@ footer {
   color: white;
   padding: 1rem;
   overflow: auto;
+  font-family: "Permanent Marker", cursive;
+}
+
+.loginPage{
+  background-image: url('./images/loginBackground.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  color: white;
+  padding: 1rem;
+  overflow: auto;
+  font-family: "Permanent Marker", cursive;
+  /* margin: 1rem; */
 }
 
 .register-container {
@@ -148,14 +171,19 @@ footer {
   padding: 2rem;
   /* border: 1px solid #ccc; */
   border-radius: 1rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 18px 30px rgba(0, 0, 0, 0.4);
   background-color: #f9f9f9b9;
 
 }
 
+.loginPage .register-container{
+  margin-top: 6rem;
+  margin-bottom: 0rem;
+}
+
 .register-container h1 {
   text-align: center;
-  color: #333;
+  color: #947060;
   margin-top: 0.5rem;
   margin-bottom: 1rem;
 }
@@ -170,6 +198,8 @@ footer {
   font-size: 1rem;
   outline: none;
   padding: 1rem;
+  background-color: #ffffff;
+  font-family: "Caveat", cursive;
 }
 
 .register-form input:focus {
@@ -189,6 +219,7 @@ footer {
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  font-family: "Permanent Marker", cursive;
 }
 
 .register-form button:hover {
@@ -213,15 +244,19 @@ footer {
   width: 100%;
 }
 
+.ramen_menu2{
+  margin-bottom: 4rem;
+}
+
 /*------- Member page------- */
 .body_reservation {
   display: flex;
-  flex-direction: column; /* Stack elements vertically */
-  justify-content: flex-start; /* Align content to the top */
-  align-items: center; /* Horizontally center the table */
-  min-height: 100vh; /* Ensure it takes the full viewport height */
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 100vh;
   box-sizing: border-box; 
-  padding-bottom: 0; /* Avoid unintended padding at the bottom */
+  padding-bottom: 0;
 
 }
 
@@ -452,6 +487,7 @@ input {
 }
 
 .label {
+  margin-left: 0rem;
   margin-top: 8px;
   font-size: 14px;
   color: #666;
@@ -477,9 +513,7 @@ input {
   background-color: #ffb274; /* Completed connector color */
 }
 
-/*-------- Reservation Date Page -------- */
-/*-------- Reservation Time Page -------- */
-/*-------- Reservation Guest Page -------- */
+/*-------- Reservation Date, Time, Guest, SpecialRequests Page -------- */
 .reservationPage{
   background-image: url('./images/background.png');
   background-size: cover;
@@ -561,6 +595,17 @@ input {
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
   text-align: center;
+  font-family: "Caveat", cursive;
+  background-color: white;
+  
+}
+
+.reservationConfirm{
+  color: white;
+  font-family: "Caveat", cursive;
+}
+
+.reservationConfirm h1, .reservationConfirm strong{
   font-family: "Permanent Marker", cursive;
 }
 
