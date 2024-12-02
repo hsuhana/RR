@@ -63,7 +63,8 @@ const Member = () => {
 
     return (
         <div>
-            <h1>Member Profile</h1>
+            <div className="memberSection">
+            <h1 className="memberTitle" >Member Profile</h1>
             {editMode ? (
            　<div className="body">
 
@@ -134,35 +135,56 @@ const Member = () => {
                 <div className="details-box">
                     <h2 class="profile-title">Details:</h2>
                     <div class="profile-details">
-                    <p className="label"><strong>Username:</strong><p className="input"> {memberData.username}</p></p>
-                    <p className="label"><strong>Name:</strong> <p className="input"> {memberData.firstName} {memberData.lastName}</p></p>
-                    <p className="label"><strong>Email:</strong> <p className="input"> {memberData.email}</p></p>
-                    <p className="label"><strong>Phone:</strong> <p className="input"> {memberData.phoneNumber}</p></p>
-                    <p className="label"><strong>Birthday:</strong> <p className="input"> {new Date(memberData.birthday).toLocaleDateString()}</p></p>
+                    <p className="labelDetails"><strong>Username:</strong><p className="input"> {memberData.username}</p></p>
+                    <p className="labelDetails"><strong>Name:</strong> <p className="input"> {memberData.firstName} {memberData.lastName}</p></p>
+                    <p className="labelDetails"><strong>Email:</strong> <p className="input"> {memberData.email}</p></p>
+                    <p className="labelDetails"><strong>Phone:</strong> <p className="input"> {memberData.phoneNumber}</p></p>
+                    <p className="labelDetails"><strong>Birthday:</strong> <p className="input"> {new Date(memberData.birthday).toLocaleDateString()}</p></p>
                     <button class="btnEdit" onClick={handleEditToggle}>EDIT</button>
                 </div>
                 </div>
                 </div>
                 
             )}
+            </div>
+            <div className="reservation_background">
             <h2 className="reservationTitle">Your Reservations:</h2>
             {reservations.length > 0 ? (
-                <ul className="reservation">
-                    {reservations.map((reservation) => (
-                        <li className="reservation_detail" key={reservation._id}>
-                            <strong>Date:</strong> {new Date(reservation.date).toLocaleDateString()}, 
-                            <strong> Time:</strong> {reservation.timeSlot}, 
-                            <strong> Guests:</strong> {reservation.guests}, 
-                            <strong> Table:</strong> {reservation.tableId ? reservation.tableId.tableNumber : "N/A"}
-                            <button className="btnCancel" onClick={() => handleCancelReservation(reservation._id)}>
-                                CANCEL
-                            </button>
-                        </li>
-                    ))}
-                </ul>
+                    <section className="body_reservation">
+                    <table className="reservationTable">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Guests</th>
+                            <th>Table</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {reservations.map((reservation) => (
+                            <tr className="reservation_detail" key={reservation._id}>
+                                <td>{new Date(reservation.date).toLocaleDateString()}</td>
+                                <td>{reservation.timeSlot}</td>
+                                <td>{reservation.guests}</td>
+                                <td>{reservation.tableId ? reservation.tableId.tableNumber : "N/A"}</td>
+                                <td>
+                                    <button
+                                        className="btnCancel"
+                                        onClick={() => handleCancelReservation(reservation._id)}
+                                    >
+                                        CANCEL
+                                    </button>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+                </section>
+                
             ) : (
                 <p>No reservations found.</p>
-            )}
+            )}</div>
         </div>
     );
 };
