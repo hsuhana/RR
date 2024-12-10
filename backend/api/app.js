@@ -9,6 +9,8 @@ var logger = require('morgan');
 
 //mongodb
 var mongoose = require("mongoose");
+//Vercel
+const MongoStore = require("connect-mongo");
 
 var indexRouter = require('../routes/index');
 var membersRouter = require('../routes/members');
@@ -30,6 +32,10 @@ app.use(session({
   secret: "secretSession",
   resave: false,
   saveUninitialized: false,
+  //Vercel
+  store: MongoStore.create({
+    mongoUrl: process.env.MONGO_URI, // Use your MongoDB connection string
+  }),
   cookie: {
     secure: false, // Set to `true` if using HTTPS
     maxAge: 24 * 60 * 60 * 1000, // 1 day
