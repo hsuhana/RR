@@ -61,6 +61,7 @@ const corsOptions = {
   origin: ['https://rr-ten.vercel.app', 'https://rr-ten.vercel.app/login'], // Allow only your frontend domain
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true,
 };
 app.use(cors(corsOptions));
 
