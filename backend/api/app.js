@@ -1,4 +1,4 @@
-var configs = require("./configs/globals");
+var configs = require("../configs/globals");
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -10,14 +10,14 @@ var logger = require('morgan');
 //mongodb
 var mongoose = require("mongoose");
 
-var indexRouter = require('./routes/index');
-var membersRouter = require('./routes/members');
-var reservationRouter = require('./routes/reservations');
-var authRouter = require('./routes/auth');
+var indexRouter = require('../routes/index');
+var membersRouter = require('../routes/members');
+var reservationRouter = require('../routes/reservations');
+var authRouter = require('../routes/auth');
 
 var cors = require('cors');
 
-var Member = require('./models/member');
+var Member = require('../models/member');
 
 var app = express();
 
@@ -84,7 +84,9 @@ app.use(function(err, req, res, next) {
   res.send('error');
 });
 
-module.exports = app;
+//module.exports = app;
 
-
+module.exports = (req, res) => {
+  app(req, res);  // Export the Express app to be used by Vercel
+};
 
