@@ -32,10 +32,9 @@ export const AuthProvider = ({ children }) => {
         fetchAuthStatus();
     }, []);
 
-    //Vercel
     const login = async (username, password) => {
         try {
-            const response = await axios.post( "https://rr-ten.vercel.app/auth/login", { username, password }, { withCredentials: true });
+            const response = await axios.post( "/login", { username, password }, { withCredentials: true });
             if (response.data.success) {
                 setAuthState({
                     isAuthenticated: true,
