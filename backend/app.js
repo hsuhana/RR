@@ -73,4 +73,13 @@ app.use(function(err, req, res, next) {
   res.send('error');
 });
 
-module.exports = app;
+//before change(No Vercel)
+//module.exports = app;
+
+
+//after change(Vercel)
+// Vercel requires you to export the app as a function
+module.exports = (req, res) => {
+  app(req, res); // Use the express app to handle requests
+};
+
