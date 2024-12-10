@@ -13,7 +13,7 @@ const Reservation = () => {
     const [timeSlot, setTimeSlot] = useState('');
     const [guests, setGuests] = useState(0);
     const [table, setTable] = useState('');
-    const [specialRequests, setSpecialRequests] = useState('');
+    //const [specialRequests, setSpecialRequests] = useState('');
     //const [isCheckingAuth, setIsCheckingAuth] = useState(true);
 
 
@@ -43,7 +43,7 @@ const Reservation = () => {
                 setTable(data.table);
                 break;
             case 4:
-                setSpecialRequests(data);
+                //setSpecialRequests(data);
                 break;
             // case 5:
             //     setSpecialRequests(data);

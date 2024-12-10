@@ -1,5 +1,5 @@
 // src/components/MainRouter.js
-import React, { useState, useEffect } from 'react';
+//import React, { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Home from '../pages/Home';
 import Register from '../pages/Register';
