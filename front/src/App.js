@@ -6,7 +6,7 @@ import React from 'react';
 import NavbarRouter from './components/NavbarRouter';
 import MainRouter from './components/MainRouter';
 import Footer from './components/Footer';
-import { fetchData } from './api'; // Import API utility function(Vercel)
+import { fetchData } from '../context/apiService'; // Import API utility function(Vercel)
 import './App.css';
 
 
