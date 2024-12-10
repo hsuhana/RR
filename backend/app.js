@@ -57,12 +57,13 @@ app.get("/api", (req, res) => {
 });
 
 // Apply CORS middleware first
-const corsOptions = {
-  origin: ['https://rr-ten.vercel.app/', 'https://rr-y88w.vercel.app/apiService'], // Add your frontend URL here
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-};
-app.use(cors(corsOptions));
+// const corsOptions = {
+//   origin: ['https://rr-ten.vercel.app/', 'https://rr-y88w.vercel.app/apiService'], // Add your frontend URL here
+//   methods: ['GET', 'POST', 'PUT', 'DELETE'],
+//   allowedHeaders: ['Content-Type', 'Authorization'],
+// };
+// app.use(cors(corsOptions));
+app.use(cors());
 
 //Vercel change end
 
