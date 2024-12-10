@@ -53,14 +53,7 @@ app.use('/auth', authRouter);
 
 app.use(cors());
 
-//Vercel change
-// Serve React Static Files
-app.use(express.static(path.join(__dirname, "../front/build")));
 
-// Fallback Route for React
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../front/build", "index.html"));
-});
 
 // Catch 404 and Forward to Error Handler
 app.use(function (req, res, next) {
@@ -68,17 +61,11 @@ app.use(function (req, res, next) {
 });
 
 //connect to mongodb
-// mongoose.connect(configs.ConnectionStrings.MongoDB)
-// .then(() => {console.log("Connected to MongoDB!");})
-// .catch((error) => {console.error("Error connecting to MongoDB:", error);});
+mongoose.connect(configs.ConnectionStrings.MongoDB)
+.then(() => {console.log("Connected to MongoDB!");})
+.catch((error) => {console.error("Error connecting to MongoDB:", error);});
 
-//Vercel change
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true, 
-  useUnifiedTopology: true 
-})
-.then(() => console.log("MongoDB connected"))
-.catch(err => console.error("MongoDB connection failed:", err));
+
 
 
 // catch 404 and forward to error handler
@@ -97,10 +84,7 @@ app.use(function(err, req, res, next) {
   res.send('error');
 });
 
-//module.exports = app;
+module.exports = app;
 
-//Vercel
-module.exports = (req, res) => {
-  app(req, res);  // Export as a serverless function for Vercel
-};
+
 

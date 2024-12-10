@@ -76,3 +76,17 @@ const TableSelection = ({ date, timeSlot, onNext, onPrevious }) => {
 
 export default TableSelection;
 
+{/* <div>
+    <h1>Select a Table</h1>
+        <div>
+            {
+                tables.map(table => (
+                    <button key={table.tableNumber} onClick={() => handleTableSelect(table._id)}>
+                        Table {table.tableNumber} - Seats {table.seats}
+                    </button>
+                ))
+            }
+        </div>
+        <button onClick={onPrevious}>PREVIOUS</button>
+        <button onClick={handleNext} disabled={!selectedTable}>NEXT</button>
+</div> */}
