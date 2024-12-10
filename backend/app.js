@@ -58,7 +58,7 @@ app.get("/api", (req, res) => {
 
 // Apply CORS middleware first
 const corsOptions = {
-  origin: ['https://rr-ten.vercel.app'], // Allow only your frontend domain
+  origin: ['https://rr-ten.vercel.app', 'https://rr-y88w.vercel.app'], // Allow only your frontend domain
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 };
