@@ -50,7 +50,13 @@ app.use('/members', membersRouter);
 app.use('/reservations', reservationRouter);
 app.use('/auth', authRouter);
 
-app.use(cors());
+// Apply CORS middleware first
+const corsOptions = {
+  origin: ['https://your-frontend-url.vercel.app'], // Add your frontend URL here
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+};
+app.use(cors(corsOptions));
 
 //connect to mongodb
 mongoose.connect(configs.ConnectionStrings.MongoDB)
