@@ -3,7 +3,7 @@ const apiUrl = process.env.REACT_APP_API_URL;
 
 export const fetchData = () => {
   return fetch(`${apiUrl}/api`, {
-    method: 'GET',  // Make sure the method is correct
+    method: 'POST',  // Make sure the method is correct
     headers: {
       'Content-Type': 'application/json'  // Ensure Content-Type is set correctly
     }
