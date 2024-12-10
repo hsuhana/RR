@@ -7,7 +7,7 @@ import Menu from '../pages/Menu';
 import Login from '../pages/Login';
 import Reservation from '../pages/Reservation';
 import Members from '../pages/Member';
-import { fetchData } from '../context/apiService'; // Import the fetchData function from api.js
+import { fetchData } from '../apiService'; // Import the fetchData function from api.js
 
 const MainRouter = () => {
   const [data, setData] = useState(null); // State to store fetched data
