@@ -16,7 +16,7 @@ function App() {
 
   useEffect(() => {
     fetchData()
-      .then((data) => setData(data)) // Set the data once it's fetched
+      .then((data) => setData(data)) // Set the data once it's fetched...
       .catch((error) => console.error('Error fetching data:', error));
   }, []);
 
