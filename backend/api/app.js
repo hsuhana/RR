@@ -34,7 +34,7 @@ app.use(session({
   saveUninitialized: false,
   //Vercel
   store: MongoStore.create({
-    mongoUrl: process.env.MONGO_URI, // Use your MongoDB connection string
+    mongoUrl: process.env.CONNECTION_STRING_MONGODB, // Use your MongoDB connection string
   }),
   cookie: {
     secure: false, // Set to `true` if using HTTPS
