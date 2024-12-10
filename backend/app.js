@@ -50,6 +50,12 @@ app.use('/members', membersRouter);
 app.use('/reservations', reservationRouter);
 app.use('/auth', authRouter);
 
+//for Vercel change
+
+app.get("/api", (req, res) => {
+  res.json({ message: "Hello from Express!" });
+});
+
 // Apply CORS middleware first
 const corsOptions = {
   origin: ['https://rr-ten.vercel.app/', 'https://rr-y88w.vercel.app/apiService'], // Add your frontend URL here
@@ -57,6 +63,8 @@ const corsOptions = {
   allowedHeaders: ['Content-Type', 'Authorization'],
 };
 app.use(cors(corsOptions));
+
+//Vercel change end
 
 //connect to mongodb
 mongoose.connect(configs.ConnectionStrings.MongoDB)
@@ -79,13 +87,6 @@ app.use(function(err, req, res, next) {
   res.send('error');
 });
 
-//before change(No Vercel)
-//module.exports = app;
+module.exports = app;
 
-
-//after change(Vercel)
-// Vercel requires you to export the app as a function
-module.exports = (req, res) => {
-  app(req, res); // Use the express app to handle requests
-};
 
