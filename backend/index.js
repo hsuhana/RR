@@ -70,6 +70,10 @@ app.use((err, req, res, next) => {
   res.send('error');
 });
 
+app.get("/", (req, res) => {
+  res.json("hi");
+});
+
 // Server setup
 const port = normalizePort(process.env.PORT || "5001");
 app.set('port', port);
