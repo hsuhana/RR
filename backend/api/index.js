@@ -1,5 +1,5 @@
 // Import modules
-var configs = require("./configs/globals");
+var configs = require("../configs/globals");
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -12,13 +12,13 @@ var http = require("http");
 var debug = require("debug")("backend:server");
 
 // Import routes
-var indexRouter = require('./routes/index');
-var membersRouter = require('./routes/members');
-var reservationRouter = require('./routes/reservations');
-var authRouter = require('./routes/auth');
+var indexRouter = require('../routes/index');
+var membersRouter = require('../routes/members');
+var reservationRouter = require('../routes/reservations');
+var authRouter = require('../routes/auth');
 
 // Import models
-var Member = require('./models/member');
+var Member = require('../models/member');
 
 // Initialize app
 var app = express();
@@ -68,10 +68,6 @@ app.use((err, req, res, next) => {
   res.locals.error = req.app.get('env') === 'development' ? err : {};
   res.status(err.status || 500);
   res.send('error');
-});
-
-app.get("/", (req, res) => {
-  res.json("hi");
 });
 
 // Server setup
