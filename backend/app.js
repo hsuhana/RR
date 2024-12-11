@@ -1,3 +1,4 @@
+// Import modules
 var configs = require("./configs/globals");
 var createError = require('http-errors');
 var express = require('express');
@@ -6,25 +7,24 @@ var session = require("express-session");
 var passport = require("passport");
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
-//mongodb
 var mongoose = require("mongoose");
-//Vercel
-//const MongoStore = require("connect-mongo");
+var http = require("http");
+var debug = require("debug")("backend:server");
 
+// Import routes
 var indexRouter = require('./routes/index');
 var membersRouter = require('./routes/members');
 var reservationRouter = require('./routes/reservations');
 var authRouter = require('./routes/auth');
 
-var cors = require('cors');
-
+// Import models
 var Member = require('./models/member');
 
+// Initialize app
 var app = express();
 
+// Set up middleware
 app.use(logger('dev'));
-// Middleware to parse JSON
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -32,67 +32,82 @@ app.use(session({
   secret: "secretSession",
   resave: false,
   saveUninitialized: false,
-  //Vercel
-  // store: MongoStore.create({
-  //   mongoUrl: process.env.CONNECTION_STRING_MONGODB, // Use your MongoDB connection string
-  // }),
   cookie: {
-    secure: false, // Set to `true` if using HTTPS
+    secure: false,
     maxAge: 24 * 60 * 60 * 1000, // 1 day
   },
 }));
 
-//mongodb and login setting
+// Passport config
 app.use(passport.initialize());
 app.use(passport.session());
-
 passport.use(Member.createStrategy());
-// Set passport to write/read user data to/from session object
 passport.serializeUser(Member.serializeUser());
 passport.deserializeUser(Member.deserializeUser());
 
+// Routes
 app.use('/', indexRouter);
 app.use('/members', membersRouter);
 app.use('/reservations', reservationRouter);
 app.use('/auth', authRouter);
 
-
+// CORS setup
+var cors = require('cors');
 app.use(cors());
 
-
-
-// Catch 404 and Forward to Error Handler
-app.use(function (req, res, next) {
-  next(createError(404));
-});
-
-//connect to mongodb
+// Connect to MongoDB
 mongoose.connect(configs.ConnectionStrings.MongoDB)
-.then(() => {console.log("Connected to MongoDB!");})
-.catch((error) => {console.error("Error connecting to MongoDB:", error);});
+  .then(() => console.log("Connected to MongoDB!"))
+  .catch((error) => console.error("Error connecting to MongoDB:", error));
 
+// Error handling
+app.use((req, res, next) => next(createError(404)));
 
-
-
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
-});
-
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
+app.use((err, req, res, next) => {
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
   res.status(err.status || 500);
   res.send('error');
 });
 
-module.exports = app;
+// Server setup
+const port = normalizePort(process.env.PORT || "5001");
+app.set('port', port);
 
-// module.exports = (req, res) => {
-//   app(req, res);  // Export the Express app to be used by Vercel
-// };
+const server = http.createServer(app);
+
+server.listen(port, () => {
+  console.log(`Server running on http://localhost:${port}`);
+});
+server.on("error", onError);
+server.on("listening", onListening);
+
+function normalizePort(val) {
+  const port = parseInt(val, 10);
+  if (isNaN(port)) return val;
+  if (port >= 0) return port;
+  return false;
+}
+
+function onError(error) {
+  if (error.syscall !== "listen") throw error;
+  const bind = typeof port === "string" ? "Pipe " + port : "Port " + port;
+  switch (error.code) {
+    case "EACCES":
+      console.error(`${bind} requires elevated privileges`);
+      process.exit(1);
+    case "EADDRINUSE":
+      console.error(`${bind} is already in use`);
+      process.exit(1);
+    default:
+      throw error;
+  }
+}
+
+function onListening() {
+  const addr = server.address();
+  const bind = typeof addr === "string" ? `pipe ${addr}` : `port ${addr.port}`;
+  debug(`Listening on ${bind}`);
+}
+
 
