@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./api/index.js",
-    "vercel-build": "echo hello"
+    "start": "node ./api/index.js"
+    
   },
   "dependencies": {
     "connect-mongo": "^5.1.0",
