@@ -70,8 +70,6 @@ app.use((err, req, res, next) => {
   res.send('error');
 });
 
-app.get("/", (req, res) => res.send("Express on Vercel"));
-
 
 // Server setup
 const port = normalizePort(process.env.PORT || "5001");
