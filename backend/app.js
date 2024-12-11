@@ -1,4 +1,3 @@
-module.exports = (req, res) => {
 var configs = require("./configs/globals");
 var createError = require('http-errors');
 var express = require('express');
@@ -93,7 +92,7 @@ app.use(function(err, req, res, next) {
 
 //module.exports = app;
 
-
+module.exports = (req, res) => {
   app(req, res);  // Export the Express app to be used by Vercel
 };
 
