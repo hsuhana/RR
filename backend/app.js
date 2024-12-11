@@ -10,7 +10,7 @@ var logger = require('morgan');
 //mongodb
 var mongoose = require("mongoose");
 //Vercel
-const MongoStore = require("connect-mongo");
+//const MongoStore = require("connect-mongo");
 
 var indexRouter = require('./routes/index');
 var membersRouter = require('./routes/members');
@@ -33,9 +33,9 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   //Vercel
-  store: MongoStore.create({
-    mongoUrl: process.env.CONNECTION_STRING_MONGODB, // Use your MongoDB connection string
-  }),
+  // store: MongoStore.create({
+  //   mongoUrl: process.env.CONNECTION_STRING_MONGODB, // Use your MongoDB connection string
+  // }),
   cookie: {
     secure: false, // Set to `true` if using HTTPS
     maxAge: 24 * 60 * 60 * 1000, // 1 day
@@ -90,9 +90,9 @@ app.use(function(err, req, res, next) {
   res.send('error');
 });
 
-//module.exports = app;
+module.exports = app;
 
-module.exports = (req, res) => {
-  app(req, res);  // Export the Express app to be used by Vercel
-};
+// module.exports = (req, res) => {
+//   app(req, res);  // Export the Express app to be used by Vercel
+// };
 
