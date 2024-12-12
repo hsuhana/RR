@@ -3,10 +3,10 @@ var router = express.Router();
 var Member = require('../models/member');
 var passport = require("passport");
 
-// GET /
-// router.get('/', async (req, res) => {
-//   return res.status(200).json({ message: "success" });
-// })
+// GET / prevent showing error from Vercel
+router.get('/', async (req, res) => {
+  return res.status(200).json({ message: "success" });
+})
 
 // POST /register
 router.post('/register', async (req, res) => {
