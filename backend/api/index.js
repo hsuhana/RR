@@ -45,7 +45,7 @@ passport.use(Member.createStrategy());
 passport.serializeUser(Member.serializeUser());
 passport.deserializeUser(Member.deserializeUser());
 
-app.get("/", (req, res) => res.send("Express on Vercel"));
+//app.get("/", (req, res) => res.send("Express on Vercel"));
 
 // Routes
 app.use('/', indexRouter);
