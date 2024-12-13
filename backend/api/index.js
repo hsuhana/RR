@@ -60,6 +60,7 @@ app.use(session({
   secret: "secretSession",
   resave: false,
   saveUninitialized: false,
+  store: MongoStore.create({ mongoUrl: process.env.CONNECTION_STRING_MONGODB }),
   cookie: {
     secure: true,
     maxAge: 24 * 60 * 60 * 1000, // 1 day
