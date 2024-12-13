@@ -17,7 +17,7 @@ export const AuthProvider = ({ children }) => {
     useEffect(() => {
         const fetchAuthStatus = async () => {
             try{
-                const response = await axios.get('/auth/check', { withCredentials: true });
+                const response = await axios.get(`${apiUrl}/auth/check`, { withCredentials: true });
                 setAuthState({
                     isAuthenticated: response.data.isAuthenticated,
                     username: response.data.isAuthenticated ? response.data.user.username : null,
@@ -52,7 +52,7 @@ export const AuthProvider = ({ children }) => {
 
     const logout = async () => {
         try {
-            await axios.post('/logout', {}, { withCredentials: true });
+            await axios.post(`${apiUrl}/logout`, {}, { withCredentials: true });
             setAuthState({
                 isAuthenticated: false,
                 username: null,
