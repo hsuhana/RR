@@ -50,6 +50,7 @@ router.post("/login", (req, res, next) => {
     }
     // Login succeeded
     console.log('User authenticated:', user);
+    console.log("Session after login:", req.session);
     req.login(user, (err) => {
       if (err) {
         return res.status(500).json({ success: false, message: "An error occurred during login." });
