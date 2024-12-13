@@ -4,6 +4,7 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var session = require("express-session");
+const MongoStore = require('connect-mongo');
 var passport = require("passport");
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -55,14 +56,21 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+// app.use(session({
+//   secret: "secretSession",
+//   resave: false,
+//   saveUninitialized: false,
+//   cookie: {
+//     secure: true,
+//     maxAge: 24 * 60 * 60 * 1000, // 1 day
+//   },
+// }));
 app.use(session({
-  secret: "secretSession",
+  secret: 'yourSecretKey',
   resave: false,
   saveUninitialized: false,
-  cookie: {
-    secure: true,
-    maxAge: 24 * 60 * 60 * 1000, // 1 day
-  },
+  store: MongoStore.create({ mongoUrl: CONNECTION_STRING_MONGODB }),
+  cookie: { secure: true }, // Use true for HTTPS connections
 }));
 
 // Passport config
