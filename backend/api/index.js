@@ -56,27 +56,27 @@ app.options('*', (req, res) => {
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-// app.use(session({
-//   secret: "secretSession",
-//   resave: false,
-//   saveUninitialized: false,
-//   cookie: {
-//     secure: true,
-//     maxAge: 24 * 60 * 60 * 1000, // 1 day
-//   },
-// }));
 app.use(session({
-  secret: 'yourSecretKey',
+  secret: "secretSession",
   resave: false,
   saveUninitialized: false,
-  store: MongoStore.create({ mongoUrl: process.env.CONNECTION_STRING_MONGODB }),
-  cookie: { 
-    secure: process.env.NODE_ENV === 'production',
-    httpOnly: true,
+  cookie: {
+    secure: true,
     maxAge: 24 * 60 * 60 * 1000, // 1 day
-    sameSite: 'None',
-   }, // Use true for HTTPS connections
+  },
 }));
+// app.use(session({
+//   secret: 'yourSecretKey',
+//   resave: false,
+//   saveUninitialized: false,
+//   store: MongoStore.create({ mongoUrl: process.env.CONNECTION_STRING_MONGODB }),
+//   cookie: { 
+//     secure: process.env.NODE_ENV === 'production',
+//     httpOnly: true,
+//     maxAge: 24 * 60 * 60 * 1000, // 1 day
+//     sameSite: 'None',
+//    }, // Use true for HTTPS connections
+// }));
 
 // Passport config
 app.use(passport.initialize());
