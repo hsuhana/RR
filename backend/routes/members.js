@@ -6,7 +6,7 @@ const Member = require("../models/member");
 // GET /profile
 router.get('/profile', async (req, res) => {
   try{
-    console.log("User:", req.user);
+    console.log("Session after login:", req.session);
     // Retrieve the member details
     const member = await Member.findById(req.user._id).select("-password");
 
