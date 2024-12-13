@@ -80,6 +80,15 @@ passport.use(Member.createStrategy());
 passport.serializeUser(Member.serializeUser());
 passport.deserializeUser(Member.deserializeUser());
 
+passport.serializeUser((user, done) => {
+  done(null, user._id);  // Store user ID in session to minimize session data size
+});
+
+passport.deserializeUser(async (id, done) => {
+  const user = await Member.findById(id);  // Retrieve the full user object by ID
+  done(null, user);  // Store the full user object in the session
+});
+
 //app.get("/", (req, res) => res.send("Express on Vercel"));
 
 // Routes
