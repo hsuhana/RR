@@ -6,6 +6,7 @@ const Member = require("../models/member");
 // GET /profile
 router.get('/profile', async (req, res) => {
   try{
+    console.log("User:", req.user);
     // Retrieve the member details
     const member = await Member.findById(req.user._id).select("-password");
 
@@ -20,7 +21,7 @@ router.get('/profile', async (req, res) => {
 
   }catch(error){
     
-    console.log("User:", req.user);
+    //console.log("User:", req.user);
     //res.status(500).json({ success: false, message: "Error fetching profile data.", error });
     console.error("Error fetching profile data:", error); // Log the error details
     res.status(500).json({ 
