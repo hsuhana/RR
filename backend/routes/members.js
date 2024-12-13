@@ -6,8 +6,15 @@ const Member = require("../models/member");
 // GET /profile
 router.get('/profile', async (req, res) => {
   try{
-    console.log('Session after login:', req.session);
+    //console.log('Session after login:', req.session);
     // Retrieve the member details
+
+    if (!req.user) {
+      return res.status(401).json({ message: 'User not authenticated' });
+    }
+  
+    console.log("User in session:", req.user); // Log session data to debug
+
     const member = await Member.findById(req.user._id).select("-password");
 
     // Retrieve reservations associated with the member
