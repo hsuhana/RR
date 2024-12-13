@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const Member = () => {
+    const apiUrl = process.env.REACT_APP_API_URL || '';
+
     const [memberData, setMemberData] = useState(null);
     const [reservations, setReservations] = useState([]);
     const [error, setError] = useState("");
     const [editMode, setEditMode] = useState(false);
     const [formData, setFormData] = useState({});
-
-    const apiUrl = process.env.REACT_APP_API_URL || '';
 
     useEffect(() => {
         const fetchMemberData = async () => {
