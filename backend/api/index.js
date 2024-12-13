@@ -29,29 +29,26 @@ var app = express();
 
 //https://rr-juvb.vercel.app
 
-//app.options('*', cors());
+var cors = require('cors');
 
-// app.use(cors({
-//   origin: 'https://rr-juvb.vercel.app',   // Allow the frontend URL to make requests
-//   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed methods
-//   credentials: true,  // Allow credentials (cookies, headers)
-// }));
+// CORS configuration
+app.use(cors({
+  origin: 'https://rr-juvb.vercel.app',  // Replace with your frontend domain
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],  // Add any other headers if necessary
+  credentials: true, // Allow credentials (cookies or authorization headers)
+}));
 
-// Handle preflight requests
+// Handle preflight requests manually if needed
 app.options('*', (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', 'https://rr-juvb.vercel.app');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   res.setHeader('Access-Control-Allow-Credentials', 'true');
-  res.sendStatus(200); // Respond with a 200 status for preflight requests
+  res.sendStatus(200);  // Respond with 200 OK for preflight requests
 });
 
-// Enable CORS for your actual routes
-app.use(cors({
-  origin: 'https://rr-juvb.vercel.app',  // Adjust this to your frontend's domain
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  credentials: true,
-}));
+
 
 // Set up middleware
 app.use(logger('dev'));
