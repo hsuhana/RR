@@ -59,6 +59,8 @@ app.use('/auth', authRouter);
 
 //https://rr-juvb.vercel.app
 
+app.options('*', cors());
+
 app.use(cors({
   origin: 'https://rr-juvb.vercel.app',   // Allow the frontend URL to make requests
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed methods
