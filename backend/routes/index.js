@@ -3,22 +3,6 @@ var router = express.Router();
 var Member = require('../models/member');
 var passport = require("passport");
 
-// Handle preflight requests
-app.options('*', (req, res) => {
-  res.setHeader('Access-Control-Allow-Origin', 'https://rr-juvb.vercel.app');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  res.setHeader('Access-Control-Allow-Credentials', 'true');
-  res.sendStatus(200); // Respond with a 200 status for preflight requests
-});
-
-// Enable CORS for your actual routes
-app.use(cors({
-  origin: 'https://rr-juvb.vercel.app',  // Adjust this to your frontend's domain
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  credentials: true,
-}));
-
 // GET / prevent showing error from Vercel
 router.get('/', async (req, res) => {
   return res.status(200).json({ message: "success" });

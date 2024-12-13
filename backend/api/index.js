@@ -31,10 +31,26 @@ var app = express();
 
 //app.options('*', cors());
 
+// app.use(cors({
+//   origin: 'https://rr-juvb.vercel.app',   // Allow the frontend URL to make requests
+//   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed methods
+//   credentials: true,  // Allow credentials (cookies, headers)
+// }));
+
+// Handle preflight requests
+app.options('*', (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', 'https://rr-juvb.vercel.app');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  res.sendStatus(200); // Respond with a 200 status for preflight requests
+});
+
+// Enable CORS for your actual routes
 app.use(cors({
-  origin: 'https://rr-juvb.vercel.app',   // Allow the frontend URL to make requests
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed methods
-  credentials: true,  // Allow credentials (cookies, headers)
+  origin: 'https://rr-juvb.vercel.app',  // Adjust this to your frontend's domain
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true,
 }));
 
 // Set up middleware
