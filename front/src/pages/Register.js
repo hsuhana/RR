@@ -27,7 +27,7 @@ const Register = () => {
         e.preventDefault();
         try{
             //const response = await axios.post('/register', formData);
-            const response = await axios.post(`${apiUrl}/register`, formData);
+            const response = await axios.post(`${apiUrl}/api/register`, formData);
             alert(response.data.message);
             navigate("/login");
         }catch (error) {
