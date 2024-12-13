@@ -54,8 +54,16 @@ app.use('/reservations', reservationRouter);
 app.use('/auth', authRouter);
 
 // CORS setup
-var cors = require('cors');
+//var cors = require('cors');
+//app.use(cors());
+
+const cors = require('cors');
+// Allow all origins
 app.use(cors());
+// Allow specific origin(s)
+app.use(cors({
+  origin: 'https://rr-juvb.vercel.app'
+}));
 
 // Connect to MongoDB
 mongoose.connect(configs.ConnectionStrings.MongoDB)
