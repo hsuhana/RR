@@ -26,16 +26,11 @@ const Register = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try{
-
-            const headers = {
-                //'Content-Type': 'application/json', // Ensure it's JSON
-                'Access-Control-Allow-Origin': '*' // Allow all origins
-            };
-
+            
             //const response = await axios.post('/register', formData);
             const response = await axios.post(`${apiUrl}/register`, formData);
             alert(response.data.message);
-            //navigate("/login");
+            navigate("/login");
         }catch (error) {
             alert(`Error: ${error.response.data.error}`);
         }

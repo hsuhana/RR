@@ -13,7 +13,7 @@ router.post('/register', async (req, res) => {
   try {
 
     // Set CORS headers manually
-    res.setHeader('Access-Control-Allow-Origin', 'ttps://rr-juvb.vercel.app'); // Allow frontend domain
+    res.setHeader('Access-Control-Allow-Origin', 'https://rr-juvb.vercel.app'); // Allow frontend domain
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE'); // Allowed HTTP methods
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization'); // Allowed headers
     res.setHeader('Access-Control-Allow-Credentials', 'true'); // Allow cookies or credentials
