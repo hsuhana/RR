@@ -52,7 +52,7 @@ app.options('*', (req, res) => {
 
 
 // Set up middleware
-app.use(logger('dev'));
+//app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -70,7 +70,11 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   store: MongoStore.create({ mongoUrl: process.env.CONNECTION_STRING_MONGODB }),
-  cookie: { secure: process.env.NODE_ENV === 'production' }, // Use true for HTTPS connections
+  cookie: { 
+    secure: process.env.NODE_ENV === 'production',
+    httpOnly: true,
+    maxAge: 24 * 60 * 60 * 1000, // 1 day
+   }, // Use true for HTTPS connections
 }));
 
 // Passport config
