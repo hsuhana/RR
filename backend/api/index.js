@@ -69,7 +69,7 @@ app.use(session({
   secret: 'yourSecretKey',
   resave: false,
   saveUninitialized: false,
-  store: MongoStore.create({ mongoUrl: CONNECTION_STRING_MONGODB }),
+  store: MongoStore.create({ mongoUrl: process.env.CONNECTION_STRING_MONGODB }),
   cookie: { secure: true }, // Use true for HTTPS connections
 }));
 
