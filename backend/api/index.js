@@ -70,7 +70,7 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   store: MongoStore.create({ mongoUrl: process.env.CONNECTION_STRING_MONGODB }),
-  cookie: { secure: true }, // Use true for HTTPS connections
+  cookie: { secure: process.env.NODE_ENV === 'production' }, // Use true for HTTPS connections
 }));
 
 // Passport config

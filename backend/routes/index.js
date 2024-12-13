@@ -55,6 +55,9 @@ router.post("/login", (req, res, next) => {
       if (err) {
         return res.status(500).json({ success: false, message: "An error occurred during login." });
       }
+
+      console.log('Session after login:', req.session);  // Log session to verify
+
       return res.status(200).json({ 
         success: true,
         message: "Login successful!",
