@@ -20,6 +20,7 @@ router.get('/profile', async (req, res) => {
 
   }catch(error){
     
+    console.log("User:", req.user);
     //res.status(500).json({ success: false, message: "Error fetching profile data.", error });
     console.error("Error fetching profile data:", error); // Log the error details
     res.status(500).json({ 
