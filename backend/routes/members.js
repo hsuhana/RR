@@ -20,7 +20,13 @@ router.get('/profile', async (req, res) => {
 
   }catch(error){
     
-    res.status(500).json({ success: false, message: "Error fetching profile data.", error });
+    //res.status(500).json({ success: false, message: "Error fetching profile data.", error });
+    console.error("Error fetching profile data:", error); // Log the error details
+    res.status(500).json({ 
+      success: false, 
+      message: "Error fetching profile data.", 
+      error: error.message || "Internal Server Error" 
+    });
   }
 });
 
