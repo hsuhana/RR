@@ -57,12 +57,12 @@ app.use('/auth', authRouter);
 //var cors = require('cors');
 //app.use(cors());
 
-const cors = require('cors');
-// Allow all origins
-app.use(cors());
-// Allow specific origin(s)
+//https://rr-juvb.vercel.app
+
 app.use(cors({
-  origin: 'https://rr-juvb.vercel.app'
+  origin: 'https://rr-juvb.vercel.app',   // Allow the frontend URL to make requests
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed methods
+  credentials: true,  // Allow credentials (cookies, headers)
 }));
 
 // Connect to MongoDB
