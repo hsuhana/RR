@@ -5,6 +5,9 @@ import axios from 'axios';
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
+
+    const apiUrl = process.env.REACT_APP_API_URL || '';
+
     const [authState, setAuthState] = useState({
         isAuthenticated: false,
         username: null,
@@ -34,7 +37,7 @@ export const AuthProvider = ({ children }) => {
 
     const login = async (username, password) => {
         try {
-            const response = await axios.post( "/login", { username, password }, { withCredentials: true });
+            const response = await axios.post( `${apiUrl}/login`, { username, password }, { withCredentials: true });
             if (response.data.success) {
                 setAuthState({
                     isAuthenticated: true,
