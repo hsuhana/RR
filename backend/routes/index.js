@@ -5,6 +5,7 @@ var passport = require("passport");
 
 // GET / prevent showing error from Vercel
 router.get('/', async (req, res) => {
+  console.log("Session after login:", req.session);
   return res.status(200).json({ message: "success" });
 })
 
